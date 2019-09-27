@@ -14,17 +14,7 @@
 #include <boost/asio/executor.hpp>
 #include <boost/asio/async_result.hpp>
 
-/* override if you want to (you must if you dont use c++20)
- * some good implementations:
- *	boost::beast::bind_front_handler //best, even better than std::bind_front
- *	ctil::bind_front //doesnt fit all cases but compiles fastest on my machine
-*/
-
-//nvm i decided to change it to boost::beast::bind_front_handler by default
-/*#ifndef CTIL_BIND_FRONT
-#include <functional>
-#define CTIL_BIND_FRONT std::bind_front
-#endif*/
+// override if you want to
 #ifndef CTIL_BIND_FRONT
 #include <boost/beast/core/bind_handler.hpp>
 #define CTIL_BIND_FRONT boost::beast::bind_front_handler
